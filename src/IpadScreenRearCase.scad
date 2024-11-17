@@ -3,9 +3,13 @@ $fn=25;
 /*
 This is an experimental model for a case for recycling a first generation ipad screen.
 Please see video on youtube.com/spidermaf for more details
+https://www.youtube.com/watch?v=E-tcDI7Qrt4
+
+-Spidermaf
 
 */
-BOX_W = 186; // Box Width (changed not printed
+
+BOX_W = 186; // Box Width 
 BOX_L = 239;// Box Length
 BOX_H = 25; // Box Height
 STANDOFF_DROP = 5;
@@ -58,6 +62,56 @@ cube( [184,236,30]);
  
 }
     
+module buttons(){
+    /* buttons */
+    
+    translate([88,-90,0]){
+    
+    translate([20.5,50,0]){
+    cylinder(h=5,r=1.25);
+    cylinder(h=1,r=3);}
+    
+    translate([20.5,57,0]){
+    cylinder(h=5,r=1.25);
+    cylinder(h=1,r=3);}
+    
+    translate([20.5,64,0]){
+    cylinder(h=5,r=1.25);
+    cylinder(h=1,r=3);}
+    
+    translate([20.5,71,0]){
+    cylinder(h=5,r=1.25);
+    cylinder(h=1,r=3);}
+    
+    translate([20.5,78,0]){
+    cylinder(h=5,r=1.25);
+    cylinder(h=1,r=3);} }
+    
+    }
+    
+ module bracket(){
+         translate([88,50,0]) {
+    /*card backstop bracket*/
+    difference(){    
+            union(){
+    translate([14.5,-53,0]) 
+    cube( [12,90,3]);
+        
+    translate([14.5,-24,0])
+        cube( [20,8,3]); 
+                
+    translate([14.5,21,0])
+        cube( [20,8,3]);             
+            }           
+    translate([20.5,-21,0])           
+    cylinder(h=20,r=1.5);
+               
+    translate([20.5,24,0])           
+    cylinder(h=20,r=1.5);  } 
+    
+
+}
+     }   
 
 module buttonHoles(){
     
@@ -88,7 +142,7 @@ translate([-74,7,0])
     
     }
 
-
+module caseBack(){
 difference() {
 union() {
 /* box start */
@@ -197,47 +251,11 @@ translate([-54,0,5])
      }
  }
  }
+}
 
-    translate([88,50,0]) {
-    /*card backstop bracket*/
-    difference(){    
-            union(){
-    translate([14.5,-53,0]) 
-    cube( [12,90,3]);
-        
-    translate([14.5,-24,0])
-        cube( [20,8,3]); 
-                
-    translate([14.5,22,0])
-        cube( [20,8,3]);             
-            }           
-    translate([20.5,-21,0])           
-    cylinder(h=20,r=1.5);
-               
-    translate([20.5,24,0])           
-    cylinder(h=20,r=1.5);  } 
-    
-    /* buttons */
-    
-    translate([0,-150,0]){
-    
-    translate([20.5,50,0]){
-    cylinder(h=5,r=1);
-    cylinder(h=1,r=3);}
-    
-    translate([20.5,57,0]){
-    cylinder(h=5,r=1);
-    cylinder(h=1,r=3);}
-    
-    translate([20.5,64,0]){
-    cylinder(h=5,r=1);
-    cylinder(h=1,r=3);}
-    
-    translate([20.5,71,0]){
-    cylinder(h=5,r=1);
-    cylinder(h=1,r=3);}
-    
-    translate([20.5,78,0]){
-    cylinder(h=5,r=1);
-    cylinder(h=1,r=3);} }
-} 
+caseBack();
+buttons();
+bracket();
+
+
+ 
