@@ -5,11 +5,15 @@ This is an experimental model for a case for recycling a first generation ipad s
 Please see video on youtube.com/spidermaf for more details
 https://www.youtube.com/watch?v=E-tcDI7Qrt4
 
+Original easy box scad taken from:
+https://www.openscad.info/index.php/2020/07/07/the-easiest-project-box/
+
 -Spidermaf
 
 */
 
-BOX_W = 186; // Box Width 
+$fn=25;
+BOX_W = 186; // Box Width (changed not printed
 BOX_L = 239;// Box Length
 BOX_H = 25; // Box Height
 STANDOFF_DROP = 5;
@@ -90,7 +94,8 @@ module buttons(){
     }
     
  module bracket(){
-         translate([88,50,0]) {
+     rotate([180,0,0]) {
+     translate([88,50,0]) {
     /*card backstop bracket*/
     difference(){    
             union(){
@@ -100,16 +105,22 @@ module buttons(){
     translate([14.5,-24,0])
         cube( [20,8,3]); 
                 
-    translate([14.5,21,0])
-        cube( [20,8,3]);             
+    translate([14.5,20,0])
+        cube( [20,8,3]);  
+     
+    translate([26.5,-24,-4])
+        cube( [8,8,6]); 
+                
+    translate([26.5,20,-4])
+        cube( [8,8,6]);            
             }           
     translate([20.5,-21,0])           
-    cylinder(h=20,r=1.5);
+    cylinder(h=20,r=2);
                
     translate([20.5,24,0])           
-    cylinder(h=20,r=1.5);  } 
+    cylinder(h=20,r=2);  } 
     
-
+}
 }
      }   
 
@@ -184,34 +195,34 @@ resize([p_w,p_l,0]) // Move the posts in from the edge
     cube( [12,90,10]);
                
     translate([20.5,-21,5])           
-    cylinder(h=20,r=1.5);
+    cylinder(h=20,r=1.9);
                
     translate([20.5,24,5])           
-    cylinder(h=20,r=1.5);  }         
+    cylinder(h=20,r=1.9);  }         
 
                
               }      /* end of box */       
 
                
 
-/* holes  */
+/* port holes  */
 translate([70,-50,20])  
 rotate([0,90,0]) {
 
-translate([1,3,0])               
-    cube( [12,10,50]);
-               
-translate([5,20,0])               
-    cube( [8,18,50]);
-               
-translate([0,41,0])               
-    cube( [13,31,50]);
-    
-translate([5.5+1,72+2.5+5.5,0])   {            
-    cylinder(h=50,r=5.5);}
-    
-translate([ 5.5+2,80-5.5,0])   {     
-cube( [5.5,11,50]);}
+    translate([1,3,0])               
+        cube( [12,10,50]);
+                   
+    translate([5,20,0])               
+        cube( [8,18,50]);
+                   
+    translate([0,41,0])               
+        cube( [13,31,50]);
+        
+    translate([5.5+1,72+2.5+5.5,0])   {            
+        cylinder(h=50,r=5.5);}
+        
+    translate([ 5.5+2,80-5.5,0])   {     
+        cube( [5.5,11,50]);}
 
     
 }
@@ -225,8 +236,8 @@ cropButtons();*/
 lowerStandoffs();
 
 /*Screen tab groove*/    
-    translate([-94,-115,22]){ 
-    cube( [1,230,1]);   }  
+translate([-94.5,-60,21.75]){ 
+    cube( [1.5,120,1.25]);   } 
 
 }
 
@@ -238,22 +249,24 @@ rotate([90,0,0]) {
 
 difference() {
 translate([-9,0,5])
-    cylinder(h=5,r=4.5);
+    cylinder(h=5.3,r=4.5);
 translate([-9,0,5])
-    cylinder(h=5,r=2);
+    cylinder(h=5.3,r=1.8);
      }
 
 difference() {
 translate([-54,0,5])
-    cylinder(h=5,r=4.5);
+    cylinder(h=5.3,r=4.5);
 translate([-54,0,5])
-    cylinder(h=5,r=2);
+    cylinder(h=5.3,r=1.8);
      }
  }
  }
 }
 
+
 caseBack();
+
 buttons();
 bracket();
 
